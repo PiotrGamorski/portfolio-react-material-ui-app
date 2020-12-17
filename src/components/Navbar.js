@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import MobileRightMenuSlider from "@material-ui/core/Drawer";
 import {
@@ -64,7 +64,6 @@ const Navbar = () => {
   const classes = useStyles();
   const [state, setState] = useState({
     right: false,
-    left: false,
   });
 
   const toggleSlider = (open) => {
