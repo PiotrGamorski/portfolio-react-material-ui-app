@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   menuSliderContainer: {
     width: 250,
     background: "#511",
-    height: "30rem",
+    height: "100%",
   },
   avatar: {
     display: "block",
@@ -64,15 +64,20 @@ const Navbar = () => {
   const classes = useStyles();
   const [state, setState] = useState({
     right: false,
+    left: false,
   });
 
-  const toggleSlider = (slider, open) => {
-    setState({ ...state, [slider]: open});
+  const toggleSlider = (open) => {
+    setState({ ...state, right: open });
   };
 
   const sideList = () => {
     return (
-      <Box className={classes.menuSliderContainer} component="div">
+      <Box
+        className={classes.menuSliderContainer}
+        component="div"
+        onClick={() => toggleSlider(false)}
+      >
         <Avatar className={classes.avatar} src={avatar} alt="Russel Crowe" />
         <Divider />
         <List>
@@ -97,13 +102,17 @@ const Navbar = () => {
       <Box component="nav">
         <AppBar position="static" style={{ background: "#222" }}>
           <Toolbar>
-            <IconButton onClick={() => toggleSlider("right", true)}>
+            <IconButton onClick={() => toggleSlider(true)}>
               <ArrowBack style={{ color: "tomato" }} />
             </IconButton>
             <Typography variant="h5" style={{ color: "tan" }}>
               Portfolio
             </Typography>
-            <MobileRightMenuSlider anchor={"right"} open={state.right}>
+            <MobileRightMenuSlider
+              anchor={"right"}
+              open={state.right}
+              onClose={() => toggleSlider(false)}
+            >
               {sideList()}
             </MobileRightMenuSlider>
           </Toolbar>
