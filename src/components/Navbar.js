@@ -77,7 +77,7 @@ const Navbar = () => {
         component="div"
         onClick={() => toggleSlider(false)}
       >
-        <Avatar className={classes.avatar} src={avatar} alt="Russel Crowe" />
+        <Avatar className={classes.avatar} src={avatar} alt="Piotr Gamorski" />
         <Divider />
         <List>
           {menuItems.map((lsItem, key) => (
